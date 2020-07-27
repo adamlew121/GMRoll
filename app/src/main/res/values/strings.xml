@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">GM Roll</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Save</string>
+
+    <string name="label_head">head</string>
+    <string name="label_neck">neck</string>
+    <string name="label_arm_left">left arm</string>
+    <string name="label_arm_right">right arm</string>
+    <string name="label_hand_left">left hand</string>
+    <string name="label_hand_right">right hand</string>
+    <string name="label_torso">torso</string>
+    <string name="label_stomach">stomach</string>
+    <string name="label_thigh_left">left thigh</string>
+    <string name="label_thigh_right">right thigh</string>
+    <string name="label_foot_left">left foot</string>
+    <string name="label_foot_right">right foot</string>
+
+    <string name="button_roll">Roll</string>
+    <string name="swipe_settings_tooltip">Swipe left to view settings</string>
+    <string name="swipe_history_tooltip">Swipe right to view roll history</string>
+    <string name="top_label_history">History of previous rolls</string>
+    <string name="button_youtube">Get Rolls</string>
+</resources>

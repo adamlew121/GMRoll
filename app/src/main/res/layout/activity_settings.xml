@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:saveEnabled="true"
+    tools:context=".SettingsActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="saveEnteredData"
+        android:text="@string/button_send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/text_nodes_layout"
+        android:layout_width="293dp"
+        android:layout_height="579dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginRight="118dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/node_label_hand_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/label_hand_right"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/right_hand"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/left_hand" />
+
+        <TextView
+            android:id="@+id/node_label_foot_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="68dp"
+            android:layout_marginRight="68dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/label_foot_left"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/left_foot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stomach" />
+
+        <TextView
+            android:id="@+id/node_label_hand_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="62dp"
+            android:layout_marginRight="62dp"
+            android:text="@string/label_hand_left"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/left_hand"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/neck" />
+
+        <EditText
+            android:id="@+id/right_arm"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_torso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_arm_right" />
+
+        <EditText
+            android:id="@+id/torso"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_thigh_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_torso" />
+
+        <TextView
+            android:id="@+id/node_label_arm_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="@string/label_arm_left"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/left_arm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/head" />
+
+        <TextView
+            android:id="@+id/node_label_torso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/label_torso"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/torso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/right_arm" />
+
+        <TextView
+            android:id="@+id/node_label_thigh_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/label_thigh_left"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/left_thigh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/torso" />
+
+        <EditText
+            android:id="@+id/left_thigh"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_thigh_right"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_thigh_left" />
+
+        <TextView
+            android:id="@+id/node_label_arm_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/label_arm_right"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/right_arm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/left_arm" />
+
+        <TextView
+            android:id="@+id/node_label_thigh_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="@string/label_thigh_right"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/right_thigh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/left_thigh" />
+
+        <TextView
+            android:id="@+id/node_label_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="@string/label_head"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/head"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/left_arm"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_arm_right"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_arm_left" />
+
+        <EditText
+            android:id="@+id/right_thigh"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_thigh_right" />
+
+        <TextView
+            android:id="@+id/node_label_neck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="92dp"
+            android:layout_marginRight="92dp"
+            android:text="@string/label_neck"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/neck"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/node_label_stomach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/label_stomach"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/stomach"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/right_hand" />
+
+        <TextView
+            android:id="@+id/node_label_foot_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:text="@string/label_foot_right"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/right_foot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/left_foot" />
+
+        <EditText
+            android:id="@+id/head"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_arm_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_head" />
+
+        <EditText
+            android:id="@+id/neck"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_hand_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_neck" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top" />
+
+        <EditText
+            android:id="@+id/left_hand"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_hand_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_hand_left" />
+
+        <EditText
+            android:id="@+id/right_hand"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_stomach"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_hand_right" />
+
+        <EditText
+            android:id="@+id/stomach"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_foot_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_stomach" />
+
+        <EditText
+            android:id="@+id/left_foot"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toTopOf="@+id/node_label_foot_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_foot_left" />
+
+        <EditText
+            android:id="@+id/right_foot"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/node_label_foot_right" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
