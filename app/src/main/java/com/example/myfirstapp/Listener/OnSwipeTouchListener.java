@@ -1,4 +1,4 @@
-package com.example.myfirstapp.Listeners;
+package com.example.myfirstapp.Listener;
 
 import android.content.Context;
 import android.view.GestureDetector;

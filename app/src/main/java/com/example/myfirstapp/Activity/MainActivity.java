@@ -1,20 +1,21 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myfirstapp.Listeners.OnSwipeTouchListener;
+import com.example.myfirstapp.Listener.OnSwipeTouchListener;
+import com.example.myfirstapp.R;
 
 import java.util.Iterator;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
 
     public static final String EXTRA_OPTIONS = "com.example.myfirstapp.OPTIONS";
     public static final String EXTRA_SUM = "com.example.myfirstapp.SUM";
@@ -65,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        System.out.println("xxx");
+
+        System.out.println();
+
         int drawable;
         switch(result) {
             case "head":
@@ -79,28 +84,28 @@ public class MainActivity extends AppCompatActivity {
             case "stomach":
                 drawable = R.drawable.body_stomach;
                 break;
-            case "left_arm":
+            case "arm_left":
                 drawable = R.drawable.body_arm_left;
                 break;
-            case "left_hand":
+            case "hand_left":
                 drawable = R.drawable.body_hand_left;
                 break;
-            case "right_arm":
+            case "arm_right":
                 drawable = R.drawable.body_arm_right;
                 break;
-            case "right_hand":
+            case "hand_right":
                 drawable = R.drawable.body_hand_right;
                 break;
-            case "left_thigh":
+            case "thigh_left":
                 drawable = R.drawable.body_thigh_left;
                 break;
-            case "left_foot":
+            case "foot_left":
                 drawable = R.drawable.body_foot_left;
                 break;
-            case "right_thigh":
+            case "thigh_right":
                 drawable = R.drawable.body_thigh_right;
                 break;
-            case "right_foot":
+            case "foot_right":
                 drawable = R.drawable.body_foot_right;
                 break;
             default:

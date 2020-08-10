@@ -15,10 +15,18 @@
     <string name="label_thigh_right">right thigh</string>
     <string name="label_foot_left">left foot</string>
     <string name="label_foot_right">right foot</string>
+    <string name="label_title">title</string>
 
     <string name="button_roll">Roll</string>
     <string name="swipe_settings_tooltip">Swipe left to view settings</string>
     <string name="swipe_history_tooltip">Swipe right to view roll history</string>
     <string name="top_label_history">History of previous rolls</string>
     <string name="button_youtube">Get Rolls</string>
+
+    <string name="add_userTheme">Add new Theme</string>
+    <string name="hint_userTheme">Title&#8230;</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Theme not saved because it is empty.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

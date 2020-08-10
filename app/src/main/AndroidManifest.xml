@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myfirstapp">
 
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,25 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HistoryActivity"
+            android:name=".Activity.NewUserThemeActivity"
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
+        <activity android:name=".Activity.TempRoomActivity" />
+        <activity
+            android:name=".Activity.HistoryActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SettingsActivity"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize">
-            </activity>
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
-            android:name=".SettingsActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".DisplayMessageActivity"
-            android:screenOrientation="portrait">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
