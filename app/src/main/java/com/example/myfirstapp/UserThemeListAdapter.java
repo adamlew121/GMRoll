@@ -41,9 +41,12 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
     private UserThemeViewModel mUserThemeViewModel;
     private int currentIndex = -1;
     private String currentTitle;
+    private UserThemeListInterface userThemeListInterface;
 
-    public UserThemeListAdapter(Context context) {
+    public UserThemeListAdapter(Context context, UserThemeListInterface userThemeListInterface) {
         inflater = LayoutInflater.from(context);
+        this.userThemeListInterface = userThemeListInterface;
+        currentIndex = 0;
     }
 
     @NonNull
@@ -58,11 +61,13 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
                 System.out.println("position = " + holder.getAdapterPosition());
                 System.out.println("idk? = " + holder.title.getText().toString());
                 currentIndex = holder.getAdapterPosition();
-                ((SettingsActivity) view.getContext()).onRecyclerViewClick(mUserThemes.get(holder.getAdapterPosition()));
+                userThemeListInterface.onThemeSelected(mUserThemes.get(holder.getAdapterPosition()));
 
                 notifyDataSetChanged();
             }
         });
+        userThemeListInterface.onThemeSelected(mUserThemes.get(currentIndex));
+        changeSelectedThemeStyle(holder, currentIndex);
 
         return holder;
     }
@@ -76,6 +81,15 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
             holder.title.setText("No Theme");
         }
 
+        changeSelectedThemeStyle(holder, position);
+    }
+
+    public void setUserThemes(List<UserTheme> userThemes) {
+        mUserThemes = userThemes;
+        notifyDataSetChanged();
+    }
+
+    public void changeSelectedThemeStyle(@NonNull UserThemeViewHolder holder, int position) {
         if (currentIndex == position) {
             holder.cardView.setBackgroundColor(Color.parseColor("#7D6464"));
             holder.title.setTextColor(Color.parseColor("#ffffff"));
@@ -83,11 +97,6 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
             holder.cardView.setBackgroundColor(Color.parseColor("#ffffff"));
             holder.title.setTextColor(Color.parseColor("#0B0909"));
         }
-    }
-
-    public void setUserThemes(List<UserTheme> userThemes) {
-        mUserThemes = userThemes;
-        notifyDataSetChanged();
     }
 
     @Override

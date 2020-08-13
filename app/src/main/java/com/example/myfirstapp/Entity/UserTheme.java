@@ -262,6 +262,18 @@ public class UserTheme {
         hashMap.put("foot_right", getFoot_right());
 
         return hashMap;
+    }
+
+    public int calculateSum() {
+        int sum = 0;
+        Iterator it = getHashMap().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            int value = (Integer) pair.getValue();
+            sum += value;
+        }
+        return sum;
 
     }
+
 }

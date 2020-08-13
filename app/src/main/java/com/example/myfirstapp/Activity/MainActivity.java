@@ -8,17 +8,21 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myfirstapp.Entity.UserTheme;
 import com.example.myfirstapp.Listener.OnSwipeTouchListener;
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.UserThemeListFragment;
 
 import java.util.Iterator;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UserThemeListFragment.FragmentUserThemeListListener {
 
 
     public static final String EXTRA_OPTIONS = "com.example.myfirstapp.OPTIONS";
     public static final String EXTRA_SUM = "com.example.myfirstapp.SUM";
+
+    private UserThemeListFragment fragment;
 
 
     @Override
@@ -30,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
             SettingsActivity.loadDefaultData(view);
         }
         setContentView(R.layout.activity_main);
+
+        fragment = new UserThemeListFragment();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_main_user_theme_list_fragment, fragment)
+                .commit();
 
         View view  = findViewById(R.id.mainLayout);
 
@@ -66,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        System.out.println("xxx");
-
-        System.out.println();
+        System.out.println(" result = " + result);
 
         int drawable;
         switch(result) {
@@ -122,4 +130,10 @@ public class MainActivity extends AppCompatActivity {
         textViewResult.setText(result);
     }
 
+    @Override
+    public void onThemeSelected(UserTheme theme) {
+        SettingsActivity.TITLE = theme.getTitle();
+        SettingsActivity.enteredData = theme.getHashMap();
+        SettingsActivity.SUM = theme.calculateSum();
+    }
 }

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#f2f2f2"
     android:saveEnabled="true"
-    tools:context=".Activity.SettingsActivity">
+    tools:context=".Activity.SettingsActivity"
+    android:id="@+id/settings_layout">
 
     <Button
         android:id="@+id/button"
@@ -34,18 +35,17 @@
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:layout_constraintVertical_bias="0.295" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <FrameLayout
+        android:id="@+id/container_user_theme_list_fragment"
         android:layout_width="405dp"
         android:layout_height="94dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/horizontal_recyclerview_item" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/text_nodes_layout"

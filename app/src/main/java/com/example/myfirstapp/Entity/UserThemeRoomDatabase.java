@@ -44,10 +44,9 @@ public abstract class UserThemeRoomDatabase extends RoomDatabase {
 //                UserThemeDao dao = INSTANCE.userThemeDao();
 //                dao.deleteAll();
 //
-//                UserTheme userTheme = new UserTheme("first");
+//                UserTheme userTheme = new UserTheme("DEFAULT");
 //                dao.insert(userTheme);
-//                userTheme = new UserTheme("second");
-//                dao.insert(userTheme);
+//
 //            });
         }
     };

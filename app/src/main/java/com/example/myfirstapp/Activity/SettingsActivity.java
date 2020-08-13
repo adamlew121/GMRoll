@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,35 +20,46 @@ import com.example.myfirstapp.Entity.UserThemeViewModel;
 import com.example.myfirstapp.Listener.OnSwipeTouchListener;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.UserThemeListAdapter;
+import com.example.myfirstapp.UserThemeListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements UserThemeListFragment.FragmentUserThemeListListener {
 
     public static int SUM = 0;
     public static HashMap<String, Integer> enteredData = new HashMap<>();
     public static String TITLE = "";
 
-    private UserThemeViewModel mUserThemeViewModel;
     public static final int NEW_USER_THEME_ACTIVITY_REQUEST_CODE = 1;
+    private UserThemeListFragment fragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        fragment = new UserThemeListFragment();
 
-        ViewGroup vg = findViewById(R.id.text_nodes_layout);
-        vg.setOnTouchListener(new OnSwipeTouchListener(this) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_user_theme_list_fragment, fragment)
+                .commit();
+
+
+        View view = findViewById(R.id.settings_layout);
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public void onSwipeRight() {
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+
+        ViewGroup vg = findViewById(R.id.text_nodes_layout);
+
 
         if (!enteredData.isEmpty()) {
             for (int i = 0; i < vg.getChildCount(); i++) {
@@ -64,20 +76,6 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
         }
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final UserThemeListAdapter adapter = new UserThemeListAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        mUserThemeViewModel = new ViewModelProvider(this).get(UserThemeViewModel.class);
-
-        mUserThemeViewModel.getAllUserThemes().observe(this, new Observer<List<UserTheme>>() {
-            @Override
-            public void onChanged(List<UserTheme> userThemes) {
-                adapter.setUserThemes(userThemes);
-            }
-        });
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (requestCode == NEW_USER_THEME_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             UserTheme userTheme = new UserTheme(Objects.requireNonNull(data.getStringExtra(NewUserThemeActivity.EXTRA_REPLY_TITLE)),(HashMap<String, Integer>) data.getSerializableExtra(NewUserThemeActivity.EXTRA_REPLY_HASHMAP));
-            mUserThemeViewModel.insert(userTheme);
+            fragment.mUserThemeViewModel.insert(userTheme);
         } else {
             Toast.makeText(
                     getApplicationContext(),
@@ -105,7 +103,8 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public void onRecyclerViewClick(UserTheme userTheme) {
+    @Override
+    public void onThemeSelected(UserTheme userTheme) {
         System.out.println("got message: " + userTheme.getTitle());
 
         ViewGroup vg = findViewById(R.id.text_nodes_layout);
@@ -150,8 +149,6 @@ public class SettingsActivity extends AppCompatActivity {
 
                 enteredData.put(name, value);
                 SUM += value;
-                UserTheme newTheme = new UserTheme(TITLE, enteredData);
-                mUserThemeViewModel.insert(newTheme);
             }
         }
 

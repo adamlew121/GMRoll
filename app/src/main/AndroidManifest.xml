@@ -15,7 +15,6 @@
         <activity
             android:name=".Activity.NewUserThemeActivity"
             android:windowSoftInputMode="stateVisible|adjustNothing" />
-        <activity android:name=".Activity.TempRoomActivity" />
         <activity
             android:name=".Activity.HistoryActivity"
             android:configChanges="orientation|screenSize"
