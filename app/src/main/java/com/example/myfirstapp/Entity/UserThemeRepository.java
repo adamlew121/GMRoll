@@ -12,7 +12,6 @@ public class UserThemeRepository {
     private LiveData<List<UserTheme>> allUserThemes;
 
 
-
     UserThemeRepository(Application application) {
         UserThemeRoomDatabase db = UserThemeRoomDatabase.getDatabase(application);
         userThemeDao = db.userThemeDao();
@@ -27,5 +26,15 @@ public class UserThemeRepository {
         UserThemeRoomDatabase.databaseWriteExecutor.execute(() -> {
             userThemeDao.insert(userTheme);
         });
+    }
+
+    void delete(UserTheme userTheme) {
+        UserThemeRoomDatabase.databaseWriteExecutor.execute(() -> {
+            userThemeDao.delete(userTheme);
+        });
+    }
+
+    UserTheme getUserThemeByTitle(String title) {
+        return userThemeDao.getUserThemeByTitle(title);
     }
 }

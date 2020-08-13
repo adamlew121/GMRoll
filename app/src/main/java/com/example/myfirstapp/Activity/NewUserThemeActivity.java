@@ -1,7 +1,5 @@
 package com.example.myfirstapp.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfirstapp.R;
 
@@ -48,13 +48,13 @@ public class NewUserThemeActivity extends AppCompatActivity {
                 } else {
                     for (int i = 0; i < vg.getChildCount(); i++) {
                         View v = vg.getChildAt(i);
-                        if (v instanceof EditText && TextUtils.isEmpty(((EditText)v).getText())) {
+                        if (v instanceof EditText && TextUtils.isEmpty(((EditText) v).getText())) {
                             setResult(RESULT_CANCELED, replyIntent);
                             finish();
                             break;
                         } else {
                             if (v instanceof EditText) {
-                                int id = ((EditText)v).getId();
+                                int id = ((EditText) v).getId();
                                 String name = v.getResources().getResourceEntryName(id);
                                 themeHashMap.put(name, Integer.parseInt(((EditText) v).getText().toString()));
                             }

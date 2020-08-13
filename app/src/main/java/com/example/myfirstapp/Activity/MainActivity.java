@@ -1,17 +1,17 @@
 package com.example.myfirstapp.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myfirstapp.Entity.UserTheme;
+import com.example.myfirstapp.Fragment.UserThemeListFragment;
 import com.example.myfirstapp.Listener.OnSwipeTouchListener;
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.UserThemeListFragment;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
                 .replace(R.id.container_main_user_theme_list_fragment, fragment)
                 .commit();
 
-        View view  = findViewById(R.id.mainLayout);
+        View view = findViewById(R.id.mainLayout);
 
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -58,7 +58,9 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
         });
     }
 
-    /** Called when the user taps the Send button */
+    /**
+     * Called when the user taps the Send button
+     */
     public void rollResult(View view) {
 
         int tempRandom = (int) (Math.random() * SettingsActivity.SUM);
@@ -76,10 +78,8 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
             }
         }
 
-        System.out.println(" result = " + result);
-
         int drawable;
-        switch(result) {
+        switch (result) {
             case "head":
                 drawable = R.drawable.body_head;
                 break;
@@ -135,5 +135,6 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
         SettingsActivity.TITLE = theme.getTitle();
         SettingsActivity.enteredData = theme.getHashMap();
         SettingsActivity.SUM = theme.calculateSum();
+
     }
 }

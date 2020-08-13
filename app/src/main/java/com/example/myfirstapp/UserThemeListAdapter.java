@@ -9,14 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myfirstapp.Activity.SettingsActivity;
 import com.example.myfirstapp.Entity.UserTheme;
 import com.example.myfirstapp.Entity.UserThemeViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,26 +24,28 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
         private TextView title;
         private CircleImageView image;
         private CardView cardView;
+        private boolean selected;
 
         private UserThemeViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.recyclerview_title);
             image = itemView.findViewById(R.id.recyclerview_image);
             cardView = itemView.findViewById(R.id.horizontal_item);
+
         }
+
     }
 
     private final LayoutInflater inflater;
     private List<UserTheme> mUserThemes;
     private UserThemeViewModel mUserThemeViewModel;
-    private int currentIndex = -1;
     private String currentTitle;
     private UserThemeListInterface userThemeListInterface;
+    private UserThemeViewHolder selectedUserThemeHolder;
 
     public UserThemeListAdapter(Context context, UserThemeListInterface userThemeListInterface) {
         inflater = LayoutInflater.from(context);
         this.userThemeListInterface = userThemeListInterface;
-        currentIndex = 0;
     }
 
     @NonNull
@@ -58,16 +57,31 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("position = " + holder.getAdapterPosition());
-                System.out.println("idk? = " + holder.title.getText().toString());
-                currentIndex = holder.getAdapterPosition();
-                userThemeListInterface.onThemeSelected(mUserThemes.get(holder.getAdapterPosition()));
+                if (selectedUserThemeHolder == null) {
+                    holder.selected = true;
+                    changeSelectedThemeStyle(holder);
+                    selectedUserThemeHolder = holder;
+                } else {
+                    selectedUserThemeHolder.selected = false;
+                    changeSelectedThemeStyle(selectedUserThemeHolder);
+                    if (!selectedUserThemeHolder.title.equals(holder.title)) {
+                        holder.selected = true;
+                        changeSelectedThemeStyle(holder);
+                        selectedUserThemeHolder = holder;
+                    } else {
+                        selectedUserThemeHolder = null;
+                    }
+                }
+                System.out.println("oi");
+                userThemeListInterface.onThemeSelected(mUserThemes.get(holder.getAdapterPosition()), !(selectedUserThemeHolder == null));
+                System.out.println("oi2");
+
 
                 notifyDataSetChanged();
             }
         });
-        userThemeListInterface.onThemeSelected(mUserThemes.get(currentIndex));
-        changeSelectedThemeStyle(holder, currentIndex);
+        // userThemeListInterface.onThemeSelected(mUserThemes.get(currentIndex));
+        // changeSelectedThemeStyle(holder, currentIndex);
 
         return holder;
     }
@@ -81,7 +95,7 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
             holder.title.setText("No Theme");
         }
 
-        changeSelectedThemeStyle(holder, position);
+        // changeSelectedThemeStyle(holder, position);
     }
 
     public void setUserThemes(List<UserTheme> userThemes) {
@@ -89,8 +103,8 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
         notifyDataSetChanged();
     }
 
-    public void changeSelectedThemeStyle(@NonNull UserThemeViewHolder holder, int position) {
-        if (currentIndex == position) {
+    public void changeSelectedThemeStyle(@NonNull UserThemeViewHolder holder) {
+        if (holder.selected) {
             holder.cardView.setBackgroundColor(Color.parseColor("#7D6464"));
             holder.title.setTextColor(Color.parseColor("#ffffff"));
         } else {

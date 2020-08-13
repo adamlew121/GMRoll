@@ -1,14 +1,10 @@
 package com.example.myfirstapp.Entity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
-import com.example.myfirstapp.Activity.SettingsActivity;
-import com.example.myfirstapp.R;
 
 import java.util.HashMap;
 import java.util.Iterator;

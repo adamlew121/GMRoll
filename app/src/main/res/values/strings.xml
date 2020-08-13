@@ -27,6 +27,8 @@
     <string name="hint_userTheme">Title&#8230;</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Theme not saved because it is empty.</string>
+    <string name="default_not_deleted">You cannot delete default theme.</string>
+    <string name="duplicate_title">Theme with given name already exists.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

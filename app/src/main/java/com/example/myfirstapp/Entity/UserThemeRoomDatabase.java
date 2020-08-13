@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {UserTheme.class}, version = 1, exportSchema = false)
 public abstract class UserThemeRoomDatabase extends RoomDatabase {
 
-    public abstract  UserThemeDao userThemeDao();
+    public abstract UserThemeDao userThemeDao();
 
     private static volatile UserThemeRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -27,6 +27,7 @@ public abstract class UserThemeRoomDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             UserThemeRoomDatabase.class, "userTheme_database")
+                            .allowMainThreadQueries()
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }

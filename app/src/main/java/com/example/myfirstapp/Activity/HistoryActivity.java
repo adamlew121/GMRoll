@@ -24,7 +24,7 @@ public class HistoryActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        View view  = findViewById(R.id.historyLayout);
+        View view = findViewById(R.id.historyLayout);
 
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -34,8 +34,8 @@ public class HistoryActivity extends YouTubeBaseActivity {
             }
         });
 
-        youTubePlayerView = (YouTubePlayerView)findViewById(R.id.youtubePlayer_view);
-        button = (Button)findViewById(R.id.buttonYoutube);
+        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtubePlayer_view);
+        button = (Button) findViewById(R.id.buttonYoutube);
 
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
