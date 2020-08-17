@@ -41,14 +41,14 @@ public abstract class UserThemeRoomDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
 
-//            databaseWriteExecutor.execute(() -> {
-//                UserThemeDao dao = INSTANCE.userThemeDao();
-//                dao.deleteAll();
-//
-//                UserTheme userTheme = new UserTheme("DEFAULT");
-//                dao.insert(userTheme);
-//
-//            });
+            databaseWriteExecutor.execute(() -> {
+                UserThemeDao dao = INSTANCE.userThemeDao();
+               // dao.deleteAll();
+
+                UserTheme userTheme = new UserTheme("DEFAULT");
+                dao.insert(userTheme);
+
+            });
         }
     };
 

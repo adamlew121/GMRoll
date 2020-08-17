@@ -34,36 +34,36 @@
             android:id="@+id/node_label_hand_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
+            android:layout_marginStart="226dp"
             android:layout_marginBottom="2dp"
             android:text="@string/label_hand_right"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/hand_right"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hand_left" />
 
         <TextView
             android:id="@+id/node_label_foot_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="226dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="76dp"
             android:layout_marginBottom="2dp"
             android:text="@string/label_foot_left"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/foot_left"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stomach" />
 
         <TextView
             android:id="@+id/node_label_hand_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="68dp"
+            android:layout_marginStart="226dp"
             android:text="@string/label_hand_left"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/hand_left"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/neck" />
 
         <EditText
@@ -217,35 +217,35 @@
             android:id="@+id/node_label_neck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="96dp"
+            android:layout_marginStart="226dp"
             android:text="@string/label_neck"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/neck"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/node_label_stomach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="226dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="68dp"
             android:layout_marginBottom="2dp"
             android:text="@string/label_stomach"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/stomach"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hand_right" />
 
         <TextView
             android:id="@+id/node_label_foot_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="64dp"
+            android:layout_marginStart="226dp"
             android:text="@string/label_foot_right"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/foot_right"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foot_left" />
 
         <EditText
@@ -269,7 +269,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="0"

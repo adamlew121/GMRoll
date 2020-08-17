@@ -134,14 +134,17 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
 
 
     public void deleteSelectedUserTheme(View view) {
-        if (selectedUserTheme.getTitle().equals(UserThemeViewModel.DEFAULT_USERTHEME_TITLE)) {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.default_not_deleted,
-                    Toast.LENGTH_LONG).show();
-        } else {
-            fragment.mUserThemeViewModel.delete(selectedUserTheme);
-            loadDataNull(findViewById(R.id.text_nodes_layout));
+        if (selectedUserTheme != null) {
+            if (selectedUserTheme.getTitle().equals(UserThemeViewModel.DEFAULT_USERTHEME_TITLE)) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        R.string.default_not_deleted,
+                        Toast.LENGTH_LONG).show();
+            } else {
+                fragment.onThemeDeleted();
+                fragment.mUserThemeViewModel.delete(selectedUserTheme);
+                loadDataNull(findViewById(R.id.text_nodes_layout));
+            }
         }
 
 
@@ -152,27 +155,39 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
      */
     public void saveEnteredData(View view) {
 
-        SUM = 0;
-        enteredData = new HashMap<>();
+        if (selectedUserTheme != null) {
+            if (selectedUserTheme.getTitle().equals(UserThemeViewModel.DEFAULT_USERTHEME_TITLE)) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        R.string.default_not_edited,
+                        Toast.LENGTH_LONG).show();
+            } else {
+                SUM = 0;
+                enteredData = new HashMap<>();
 
-        ViewGroup vg = findViewById(R.id.text_nodes_layout);
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            if (v instanceof EditText) {
-                ((EditText) v).setFocusableInTouchMode(true);
-                ((EditText) v).setFocusable(true);
-                int id = ((EditText) v).getId();
-                String name = v.getResources().getResourceEntryName(id);
+                ViewGroup vg = findViewById(R.id.text_nodes_layout);
+                for (int i = 0; i < vg.getChildCount(); i++) {
+                    View v = vg.getChildAt(i);
+                    if (v instanceof EditText) {
+                        ((EditText) v).setFocusableInTouchMode(true);
+                        ((EditText) v).setFocusable(true);
+                        int id = ((EditText) v).getId();
+                        String name = v.getResources().getResourceEntryName(id);
 
-                int value = 0;
+                        int value = 0;
 
-                if (!((EditText) v).getText().toString().equals("")) {
-                    value = Integer.parseInt(((EditText) v).getText().toString());
+                        if (!((EditText) v).getText().toString().equals("")) {
+                            value = Integer.parseInt(((EditText) v).getText().toString());
+                        }
+
+
+                        enteredData.put(name, value);
+                        SUM += value;
+
+                        fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
+                        System.out.println("eeeo");
+                    }
                 }
-
-
-                enteredData.put(name, value);
-                SUM += value;
             }
         }
 
@@ -195,6 +210,8 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
 
                 enteredData.put(name, 100);
                 SUM += 100;
+
+
             }
         }
     }

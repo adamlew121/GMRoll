@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GM Roll</string>
     <string name="button_send">Save</string>
-
     <string name="label_head">head</string>
     <string name="label_neck">neck</string>
     <string name="label_arm_left">left arm</string>
@@ -15,23 +15,17 @@
     <string name="label_foot_left">left foot</string>
     <string name="label_foot_right">right foot</string>
     <string name="label_title">title</string>
-
+    <string name="swipe_settings_tooltip">Save</string>
     <string name="button_roll">Roll</string>
-    <string name="swipe_settings_tooltip">Swipe left to view settings</string>
     <string name="swipe_history_tooltip">Swipe right to view roll history</string>
     <string name="top_label_history">History of previous rolls</string>
     <string name="button_youtube">Get Rolls</string>
-
     <string name="add_userTheme">Add new Theme</string>
     <string name="hint_userTheme">Title&#8230;</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Theme not saved because it is empty.</string>
     <string name="default_not_deleted">You cannot delete default theme.</string>
     <string name="duplicate_title">Theme with given name already exists.</string>
-    <string name="default_not_edited">You cannot edit default theme.</string>
-
-    <string name="theme_light" translatable="false">Light</string>
-    <string name="theme_dark" translatable="false">Dark</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_not_edited">You cannot edit default theme.</string>
 </resources>

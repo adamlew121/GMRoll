@@ -35,11 +35,10 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="152dp"
-        android:layout_height="54dp"
+        android:layout_width="165dp"
+        android:layout_height="78dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:text="@string/swipe_settings_tooltip"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -48,10 +47,9 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="142dp"
-        android:layout_height="55dp"
+        android:layout_width="155dp"
+        android:layout_height="76dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/swipe_history_tooltip"
         android:textSize="18sp"
@@ -73,15 +71,41 @@
 
     <FrameLayout
         android:id="@+id/container_main_user_theme_list_fragment"
-        android:layout_width="409dp"
-        android:layout_height="92dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="396dp"
+        android:layout_height="94dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonRoll"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonRoll"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
     </FrameLayout>
+
+    <Switch
+        android:id="@+id/switch_style"
+        android:layout_width="46dp"
+        android:layout_height="29dp"
+        android:checked="false"
+        android:onClick="changeStyle"
+        android:text="@string/theme_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193" />
+
+    <TextView
+        android:id="@+id/text_view_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="244dp"
+        android:layout_marginEnd="4dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/switch_style"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

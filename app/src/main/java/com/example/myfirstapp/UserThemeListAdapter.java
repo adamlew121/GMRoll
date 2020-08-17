@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -108,9 +109,20 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
             holder.cardView.setBackgroundColor(Color.parseColor("#7D6464"));
             holder.title.setTextColor(Color.parseColor("#ffffff"));
         } else {
-            holder.cardView.setBackgroundColor(Color.parseColor("#ffffff"));
-            holder.title.setTextColor(Color.parseColor("#0B0909"));
+            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                holder.cardView.setBackgroundColor(Color.parseColor("#424242"));
+                holder.title.setTextColor(Color.parseColor("#c3c3c3"));
+            } else {
+                holder.cardView.setBackgroundColor(Color.parseColor("#ffffff"));
+                holder.title.setTextColor(Color.parseColor("#0B0909"));
+            }
         }
+    }
+
+    public void unselectedActiveItem() {
+        selectedUserThemeHolder.selected = false;
+        changeSelectedThemeStyle(selectedUserThemeHolder);
+        selectedUserThemeHolder = null;
     }
 
     @Override

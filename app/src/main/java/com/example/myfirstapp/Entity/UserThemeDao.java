@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface UserThemeDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(UserTheme userTheme);
 
     @Query("DELETE FROM userTheme_table")

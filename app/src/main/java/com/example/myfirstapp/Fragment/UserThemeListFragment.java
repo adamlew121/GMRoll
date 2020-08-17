@@ -47,7 +47,7 @@ public class UserThemeListFragment extends Fragment implements UserThemeListInte
         View v = inflater.inflate(R.layout.fragment_user_theme_list, container, false);
 
         RecyclerView recyclerView = v.findViewById(R.id.recyclerview);
-        final UserThemeListAdapter adapter = new UserThemeListAdapter((Context) listener, this);
+        adapter = new UserThemeListAdapter((Context) listener, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((Context) listener, LinearLayoutManager.HORIZONTAL, false));
 
@@ -76,6 +76,10 @@ public class UserThemeListFragment extends Fragment implements UserThemeListInte
                 SettingsActivity.loadDataNull(((SettingsActivity) listener).findViewById(R.id.text_nodes_layout));
             }
         }
+    }
+
+    public void onThemeDeleted() {
+        adapter.unselectedActiveItem();
     }
 
 
