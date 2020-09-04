@@ -50,6 +50,8 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
             public void onSwipeRight() {
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_int_left, R.anim.slide_out_right);
+
             }
         });
 

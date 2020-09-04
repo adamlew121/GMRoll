@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
             public void onSwipeLeft() {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
 
             @Override
