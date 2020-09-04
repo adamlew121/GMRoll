@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <EditText
-        android:id="@+id/title_new"
+        android:id="@+id/input_new_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
@@ -38,9 +38,9 @@
             android:layout_marginBottom="2dp"
             android:text="@string/label_hand_right"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/hand_right"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_hand_right"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hand_left" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_hand_left" />
 
         <TextView
             android:id="@+id/node_label_foot_left"
@@ -51,9 +51,9 @@
             android:layout_marginBottom="2dp"
             android:text="@string/label_foot_left"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/foot_left"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_foot_left"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stomach" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_stomach" />
 
         <TextView
             android:id="@+id/node_label_hand_left"
@@ -62,12 +62,12 @@
             android:layout_marginStart="226dp"
             android:text="@string/label_hand_left"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/hand_left"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_hand_left"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/neck" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_neck" />
 
         <EditText
-            android:id="@+id/arm_right"
+            android:id="@+id/input_new_arm_right"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -81,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_arm_right" />
 
         <EditText
-            android:id="@+id/torso"
+            android:id="@+id/input_new_torso"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -101,9 +101,9 @@
             android:layout_marginStart="16dp"
             android:text="@string/label_arm_left"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/arm_left"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_arm_left"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/head" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_head" />
 
         <TextView
             android:id="@+id/node_label_torso"
@@ -115,9 +115,9 @@
             android:layout_marginBottom="2dp"
             android:text="@string/label_torso"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/torso"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_torso"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/arm_right" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_arm_right" />
 
         <TextView
             android:id="@+id/node_label_thigh_left"
@@ -129,12 +129,12 @@
             android:layout_marginBottom="2dp"
             android:text="@string/label_thigh_left"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/thigh_left"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_thigh_left"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/torso" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_torso" />
 
         <EditText
-            android:id="@+id/thigh_left"
+            android:id="@+id/input_new_thigh_left"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -157,9 +157,9 @@
             android:layout_marginBottom="2dp"
             android:text="@string/label_arm_right"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/arm_right"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_arm_right"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/arm_left" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_arm_left" />
 
         <TextView
             android:id="@+id/node_label_thigh_right"
@@ -169,9 +169,9 @@
             android:layout_marginLeft="16dp"
             android:text="@string/label_thigh_right"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/thigh_right"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_thigh_right"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thigh_left" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_thigh_left" />
 
         <TextView
             android:id="@+id/node_label_head"
@@ -180,12 +180,12 @@
             android:layout_marginStart="16dp"
             android:text="@string/label_head"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/head"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_head"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/arm_left"
+            android:id="@+id/input_new_arm_left"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -200,7 +200,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_arm_left" />
 
         <EditText
-            android:id="@+id/thigh_right"
+            android:id="@+id/input_new_thigh_right"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -220,7 +220,7 @@
             android:layout_marginStart="226dp"
             android:text="@string/label_neck"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/neck"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_neck"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -233,9 +233,9 @@
             android:layout_marginBottom="2dp"
             android:text="@string/label_stomach"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/stomach"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_stomach"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hand_right" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_hand_right" />
 
         <TextView
             android:id="@+id/node_label_foot_right"
@@ -244,12 +244,12 @@
             android:layout_marginStart="226dp"
             android:text="@string/label_foot_right"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/foot_right"
+            app:layout_constraintBottom_toTopOf="@+id/input_new_foot_right"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foot_left" />
+            app:layout_constraintTop_toBottomOf="@+id/input_new_foot_left" />
 
         <EditText
-            android:id="@+id/head"
+            android:id="@+id/input_new_head"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -264,7 +264,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_head" />
 
         <EditText
-            android:id="@+id/neck"
+            android:id="@+id/input_new_neck"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -279,7 +279,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_neck" />
 
         <EditText
-            android:id="@+id/hand_left"
+            android:id="@+id/input_new_hand_left"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -295,7 +295,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_hand_left" />
 
         <EditText
-            android:id="@+id/hand_right"
+            android:id="@+id/input_new_hand_right"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -309,7 +309,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_hand_right" />
 
         <EditText
-            android:id="@+id/stomach"
+            android:id="@+id/input_new_stomach"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -323,7 +323,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_stomach" />
 
         <EditText
-            android:id="@+id/foot_left"
+            android:id="@+id/input_new_foot_left"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -339,7 +339,7 @@
             app:layout_constraintTop_toBottomOf="@+id/node_label_foot_left" />
 
         <EditText
-            android:id="@+id/foot_right"
+            android:id="@+id/input_new_foot_right"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"

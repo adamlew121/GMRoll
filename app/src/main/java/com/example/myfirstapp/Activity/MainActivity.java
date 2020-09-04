@@ -15,9 +15,6 @@ import com.example.myfirstapp.Fragment.UserThemeListFragment;
 import com.example.myfirstapp.Listener.OnSwipeTouchListener;
 import com.example.myfirstapp.R;
 
-import java.util.Iterator;
-import java.util.Map;
-
 public class MainActivity extends AppCompatActivity implements UserThemeListFragment.FragmentUserThemeListListener {
 
 
@@ -30,11 +27,8 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (SettingsActivity.enteredData.isEmpty()) {
-            setContentView(R.layout.activity_settings);
-            View view = findViewById(R.id.text_nodes_layout);
-            SettingsActivity.loadDefaultData(view);
-        }
+        SettingsActivity.loadDefaultData();
+
         setContentView(R.layout.activity_main);
 
         fragment = new UserThemeListFragment();
@@ -75,70 +69,71 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
     public void rollResult(View view) {
 
         int tempRandom = (int) (Math.random() * SettingsActivity.SUM);
+        int rolledID = -1;
         String result = "";
-        String finalResult = "";
 
-        Iterator it = SettingsActivity.enteredData.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            int val = (int) pair.getValue();
-            if (tempRandom - val <= 0) {
-                result = pair.getKey().toString();
+        for (int i = 0; i < SettingsActivity.enteredData.length; i++) {
+            if (SettingsActivity.enteredData[i] >= tempRandom) {
+                rolledID = i;
                 break;
             } else {
-                tempRandom -= val;
+                tempRandom -= SettingsActivity.enteredData[i];
             }
         }
 
         int drawable;
-        switch (result) {
-            case "head":
+        switch (rolledID) {
+            case UserTheme.ID_HEAD:
                 drawable = R.drawable.body_head;
-                result =  getString(R.string.label_head);
+                result = getString(R.string.label_head);
                 break;
-            case "neck":
+            case UserTheme.ID_NECK:
                 drawable = R.drawable.body_neck;
-                result =  getString(R.string.label_neck);
+                result = getString(R.string.label_neck);
                 break;
-            case "torso":
-                drawable = R.drawable.body_torso;
-                result =  getString(R.string.label_torso);
-                break;
-            case "stomach":
-                drawable = R.drawable.body_stomach;
-                result =  getString(R.string.label_stomach);
-                break;
-            case "arm_left":
+            case UserTheme.ID_ARM_LEFT:
                 drawable = R.drawable.body_arm_left;
-                result =  getString(R.string.label_arm_left);
+                result = getString(R.string.label_arm_left);
                 break;
-            case "hand_left":
-                drawable = R.drawable.body_hand_left;
-                result =  getString(R.string.label_hand_left);
-                break;
-            case "arm_right":
+            case UserTheme.ID_ARM_RIGHT:
                 drawable = R.drawable.body_arm_right;
-                result =  getString(R.string.label_arm_right);
+                result = getString(R.string.label_arm_right);
                 break;
-            case "hand_right":
+            case UserTheme.ID_HAND_LEFT:
+                drawable = R.drawable.body_hand_left;
+                result = getString(R.string.label_hand_left);
+                break;
+            case UserTheme.ID_HAND_RIGHT:
                 drawable = R.drawable.body_hand_right;
-                result =  getString(R.string.label_hand_right);
+                result = getString(R.string.label_hand_right);
                 break;
-            case "thigh_left":
+            case UserTheme.ID_TORSO:
+                drawable = R.drawable.body_torso;
+                result = getString(R.string.label_torso);
+                break;
+            case UserTheme.ID_STOMACH:
+                drawable = R.drawable.body_stomach;
+                result = getString(R.string.label_stomach);
+                break;
+            case UserTheme.ID_THIGH_LEFT:
                 drawable = R.drawable.body_thigh_left;
-                result =  getString(R.string.label_thigh_left);
+                result = getString(R.string.label_thigh_left);
                 break;
-            case "foot_left":
-                drawable = R.drawable.body_foot_left;
-                result =  getString(R.string.label_foot_left);
-                break;
-            case "thigh_right":
+            case UserTheme.ID_THIGH_RIGHT:
                 drawable = R.drawable.body_thigh_right;
-                result =  getString(R.string.label_thigh_right);
+                result = getString(R.string.label_thigh_right);
                 break;
-            case "foot_right":
+            case UserTheme.ID_FOOT_LEFT:
+                drawable = R.drawable.body_foot_left;
+                result = getString(R.string.label_foot_left);
+                break;
+            case UserTheme.ID_FOOT_RIGHT:
                 drawable = R.drawable.body_foot_right;
-                result =  getString(R.string.label_thigh_right);
+                result = getString(R.string.label_thigh_right);
+                break;
+            case -1:
+                drawable = R.drawable.body_red;
+                result = "ERROR";
                 break;
             default:
                 drawable = R.drawable.body_black;
@@ -157,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
     @Override
     public void onThemeSelected(UserTheme theme) {
         SettingsActivity.TITLE = theme.getTitle();
-        SettingsActivity.enteredData = theme.getHashMap();
+        SettingsActivity.enteredData = theme.getChanceList();
         SettingsActivity.SUM = theme.calculateSum();
     }
 
@@ -169,5 +164,4 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
 
         }
     }
-
 }

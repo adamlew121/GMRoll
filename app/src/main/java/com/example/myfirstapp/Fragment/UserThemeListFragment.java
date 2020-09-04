@@ -73,7 +73,7 @@ public class UserThemeListFragment extends Fragment implements UserThemeListInte
             listener.onThemeSelected(defaultTheme);
 
             if (listener instanceof SettingsActivity) {
-                SettingsActivity.loadDataNull(((SettingsActivity) listener).findViewById(R.id.text_nodes_layout));
+                ((SettingsActivity) listener).loadDataNull();
             }
         }
     }

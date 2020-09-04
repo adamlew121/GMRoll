@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -12,64 +11,66 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfirstapp.R;
 
-import java.util.HashMap;
-
 public class NewUserThemeActivity extends AppCompatActivity {
 
     public static final String EXTRA_REPLY_TITLE = "com.example.android.Userthemelistsql.REPLY_TITLE";
-    public static final String EXTRA_REPLY_HASHMAP = "com.example.android.Userthemelistsql.REPLY_HASHMAP";
+    public static final String EXTRA_REPLY_CHANCE_LIST = "com.example.android.Userthemelistsql.REPLY_CHANCE_LIST";
 
-    private EditText mEditUserThemeView;
+    private EditText inputNewTitle;
+    private EditText[] inputList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user_theme);
 
-        ViewGroup vg = findViewById(R.id.text_nodes_layout_new);
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            if (v instanceof EditText) {
-                ((EditText) v).setText("100");
+        inputList = new EditText[]{
+                findViewById(R.id.input_new_head),
+                findViewById(R.id.input_new_neck),
+                findViewById(R.id.input_new_arm_left),
+                findViewById(R.id.input_new_arm_right),
+                findViewById(R.id.input_new_hand_left),
+                findViewById(R.id.input_new_hand_right),
+                findViewById(R.id.input_new_torso),
+                findViewById(R.id.input_new_stomach),
+                findViewById(R.id.input_new_thigh_left),
+                findViewById(R.id.input_new_thigh_right),
+                findViewById(R.id.input_new_foot_left),
+                findViewById(R.id.input_new_foot_right)
+        };
 
-            }
+        inputNewTitle = findViewById(R.id.input_new_title);
+
+        for (EditText input : inputList) {
+            input.setText(String.valueOf(100));
         }
-
-        mEditUserThemeView = findViewById(R.id.title_new);
 
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
 
-                HashMap<String, Integer> themeHashMap = new HashMap<>();
-                if (TextUtils.isEmpty(mEditUserThemeView.getText())) {
+                int[] newChanceList = new int[12];
+                if (TextUtils.isEmpty(inputNewTitle.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
-                    for (int i = 0; i < vg.getChildCount(); i++) {
-                        View v = vg.getChildAt(i);
-                        if (v instanceof EditText && TextUtils.isEmpty(((EditText) v).getText())) {
+
+                    for (int i = 0; i < newChanceList.length; i++) {
+                        if (TextUtils.isEmpty(inputList[i].getText())) {
                             setResult(RESULT_CANCELED, replyIntent);
                             finish();
                             break;
-                        } else {
-                            if (v instanceof EditText) {
-                                int id = ((EditText) v).getId();
-                                String name = v.getResources().getResourceEntryName(id);
-                                themeHashMap.put(name, Integer.parseInt(((EditText) v).getText().toString()));
-                            }
                         }
+                        newChanceList[i] = Integer.parseInt(inputList[i].getText().toString());
                     }
 
-
-                    String title = mEditUserThemeView.getText().toString();
+                    String title = inputNewTitle.getText().toString();
                     replyIntent.putExtra(EXTRA_REPLY_TITLE, title);
-                    replyIntent.putExtra(EXTRA_REPLY_HASHMAP, themeHashMap);
+                    replyIntent.putExtra(EXTRA_REPLY_CHANCE_LIST, newChanceList);
                     setResult(RESULT_OK, replyIntent);
                 }
                 finish();
             }
         });
-
     }
 }

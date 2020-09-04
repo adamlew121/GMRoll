@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import com.example.myfirstapp.Entity.UserTheme;
 import com.example.myfirstapp.Entity.UserThemeViewModel;
@@ -17,19 +16,20 @@ import com.example.myfirstapp.Listener.OnSwipeTouchListener;
 import com.example.myfirstapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity implements UserThemeListFragment.FragmentUserThemeListListener {
 
+    public static final int NEW_USER_THEME_ACTIVITY_REQUEST_CODE = 1;
+
     public static int SUM = 0;
-    public static HashMap<String, Integer> enteredData = new HashMap<>();
+    public static int[] enteredData = new int[12];
     public static String TITLE = "";
     public static UserTheme selectedUserTheme;
 
-    public static final int NEW_USER_THEME_ACTIVITY_REQUEST_CODE = 1;
+    private EditText[] inputList;
     private UserThemeListFragment fragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,6 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                 .replace(R.id.container_user_theme_list_fragment, fragment)
                 .commit();
 
-
         View view = findViewById(R.id.settings_layout);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -52,25 +51,20 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
             }
         });
 
-        ViewGroup vg = findViewById(R.id.text_nodes_layout);
-
-
-//        if (!enteredData.isEmpty()) {
-//            for (int i = 0; i < vg.getChildCount(); i++) {
-//                View v = vg.getChildAt(i);
-//                if (v instanceof EditText) {
-//                    int id = ((EditText)v).getId();
-//                    String name = v.getResources().getResourceEntryName(id);
-//
-//                    if(enteredData.containsKey(name) && enteredData.get(name) != 0) {
-//                        ((EditText) v).setText(enteredData.get(name).toString());
-//                    }
-//
-//                }
-//            }
-//
-//
-//        }
+        inputList = new EditText[]{
+                findViewById(R.id.input_head),
+                findViewById(R.id.input_neck),
+                findViewById(R.id.input_arm_left),
+                findViewById(R.id.input_arm_right),
+                findViewById(R.id.input_hand_left),
+                findViewById(R.id.input_hand_right),
+                findViewById(R.id.input_torso),
+                findViewById(R.id.input_stomach),
+                findViewById(R.id.input_thigh_left),
+                findViewById(R.id.input_thigh_right),
+                findViewById(R.id.input_foot_left),
+                findViewById(R.id.input_foot_right)
+        };
 
         FloatingActionButton fab = findViewById(R.id.fab_new_userTheme);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -80,17 +74,14 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                 startActivityForResult(intent, NEW_USER_THEME_ACTIVITY_REQUEST_CODE);
             }
         });
-
-        loadDataNull(findViewById(R.id.text_nodes_layout));
-
-
+        loadDataNull();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_USER_THEME_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            UserTheme userTheme = new UserTheme(Objects.requireNonNull(data.getStringExtra(NewUserThemeActivity.EXTRA_REPLY_TITLE)), (HashMap<String, Integer>) data.getSerializableExtra(NewUserThemeActivity.EXTRA_REPLY_HASHMAP));
+            UserTheme userTheme = new UserTheme(Objects.requireNonNull(data.getStringExtra(NewUserThemeActivity.EXTRA_REPLY_TITLE)), Objects.requireNonNull(data.getIntArrayExtra(NewUserThemeActivity.EXTRA_REPLY_CHANCE_LIST)));
             UserTheme dbTheme = fragment.mUserThemeViewModel.getUserThemeByTitle(userTheme.getTitle());
             if (dbTheme != null) {
                 Toast.makeText(
@@ -112,31 +103,18 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
     public void onThemeSelected(UserTheme userTheme) {
 
         ViewGroup vg = findViewById(R.id.text_nodes_layout);
+        int[] chances = userTheme.getChanceList();
+        enteredData = chances;
 
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            if (v instanceof CardView) {
-                for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
-                    View v2 = ((CardView) v).getChildAt(j);
-                    if (v2 instanceof EditText) {
-                        ((EditText) v2).setFocusableInTouchMode(true);
-                        ((EditText) v2).setFocusable(true);
-                        int id = ((EditText) v2).getId();
-                        String name = v2.getResources().getResourceEntryName(id);
-                        String nameSub = name.substring(name.indexOf("input_") +6);
-
-                        HashMap<String, Integer> userThemeHashMap = userTheme.getHashMap();
-                        if (userThemeHashMap.containsKey(nameSub)) {
-                            ((EditText) v2).setText(String.valueOf(userThemeHashMap.get(nameSub)));
-                        }
-                    }
-                }
-            }
+        for (int i = 0; i < chances.length; i++) {
+            inputList[i].setText(String.valueOf(chances[i]));
+            inputList[i].setFocusable(true);
+            inputList[i].setFocusableInTouchMode(true);
         }
+
         TITLE = userTheme.getTitle();
         selectedUserTheme = userTheme;
     }
-
 
     public void deleteSelectedUserTheme(View view) {
         if (selectedUserTheme != null) {
@@ -148,16 +126,11 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
             } else {
                 fragment.onThemeDeleted();
                 fragment.mUserThemeViewModel.delete(selectedUserTheme);
-                loadDataNull(findViewById(R.id.text_nodes_layout));
+                loadDataNull();
             }
         }
-
-
     }
 
-    /**
-     * Called when the user taps the Send button
-     */
     public void saveEnteredData(View view) {
 
         if (selectedUserTheme != null) {
@@ -168,90 +141,37 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                         Toast.LENGTH_LONG).show();
             } else {
                 SUM = 0;
-                enteredData = new HashMap<>();
+                enteredData = new int[12];
 
-                ViewGroup vg = findViewById(R.id.text_nodes_layout);
-                for (int i = 0; i < vg.getChildCount(); i++) {
-                    View v = vg.getChildAt(i);
-                    if (v instanceof CardView) {
-                        for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
-                            View v2 = ((CardView) v).getChildAt(j);
-                            if (v2 instanceof EditText) {
-                                ((EditText) v2).setFocusableInTouchMode(true);
-                                ((EditText) v2).setFocusable(true);
-                                int id = ((EditText) v2).getId();
-                                String name = v2.getResources().getResourceEntryName(id);
-                                String nameSub = name.substring(name.indexOf("input_") + 6);
-
-                                int value = 0;
-
-                                if (!((EditText) v2).getText().toString().equals("")) {
-                                    value = Integer.parseInt(((EditText) v2).getText().toString());
-                                }
-
-
-                                enteredData.put(nameSub, value);
-                                SUM += value;
-                            }
-
-                        }
-                    }
+                for (int i = 0; i < enteredData.length; i++) {
+                    enteredData[i] = Integer.parseInt(inputList[i].getText().toString());
+                    SUM += enteredData[i];
+                    inputList[i].setFocusableInTouchMode(true);
+                    inputList[i].setFocusable(true);
                 }
+
                 fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
                 System.out.println("eeeo");
             }
         }
-
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
     }
 
-    public static void loadDefaultData(View view) {
-        SUM = 0;
-        enteredData = new HashMap<>();
-
-        ViewGroup vg = view.findViewById(R.id.text_nodes_layout);
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            if (v instanceof CardView) {
-                for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
-                    View v2 = ((CardView) v).getChildAt(j);
-                    if (v2 instanceof EditText) {
-                        ((EditText) v2).setFocusableInTouchMode(true);
-                        ((EditText) v2).setFocusable(true);
-                        int id = ((EditText) v2).getId();
-                        String name = v2.getResources().getResourceEntryName(id);
-                        String nameSub = name.substring(name.indexOf("input_") + 6);
-
-                        enteredData.put(nameSub, 100);
-                        SUM += 100;
-                    }
-                }
-            }
-        }
+    public static void loadDefaultData() {
+        enteredData = new int[12];
+        Arrays.fill(enteredData, 100);
+        SUM = enteredData.length * 100;
     }
 
-    public static void loadDataNull(View view) {
+    public void loadDataNull() {
         SUM = 0;
-        enteredData = new HashMap<>();
+        enteredData = new int[12];
+        Arrays.fill(enteredData, 0);
         selectedUserTheme = null;
 
-        ViewGroup vg = view.findViewById(R.id.text_nodes_layout);
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            if (v instanceof CardView) {
-                for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
-                    View v2 = ((CardView) v).getChildAt(j);
-                    if (v2 instanceof EditText) {
-                        ((EditText) v2).setText("0");
-                        ((EditText) v2).setFocusable(false);
-                        ((EditText) v2).setFocusableInTouchMode(false);
-                    }
-                }
-
-            }
+        for (EditText input : inputList) {
+            input.setText(String.valueOf(0));
+            input.setFocusable(false);
+            input.setFocusableInTouchMode(false);
         }
     }
-
-
 }

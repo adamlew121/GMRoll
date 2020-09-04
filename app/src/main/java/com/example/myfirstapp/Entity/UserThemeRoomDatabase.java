@@ -6,12 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {UserTheme.class}, version = 1, exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class UserThemeRoomDatabase extends RoomDatabase {
 
     public abstract UserThemeDao userThemeDao();
@@ -43,7 +45,7 @@ public abstract class UserThemeRoomDatabase extends RoomDatabase {
 
             databaseWriteExecutor.execute(() -> {
                 UserThemeDao dao = INSTANCE.userThemeDao();
-               // dao.deleteAll();
+                // dao.deleteAll();
 
                 UserTheme userTheme = new UserTheme("DEFAULT");
                 dao.insert(userTheme);
