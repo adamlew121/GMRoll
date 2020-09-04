@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.myfirstapp.Entity.UserTheme;
 import com.example.myfirstapp.Entity.UserThemeViewModel;
@@ -114,22 +115,26 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
 
         for (int i = 0; i < vg.getChildCount(); i++) {
             View v = vg.getChildAt(i);
-            if (v instanceof EditText) {
-                ((EditText) v).setFocusableInTouchMode(true);
-                ((EditText) v).setFocusable(true);
-                int id = ((EditText) v).getId();
-                String name = v.getResources().getResourceEntryName(id);
+            if (v instanceof CardView) {
+                for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
+                    View v2 = ((CardView) v).getChildAt(j);
+                    if (v2 instanceof EditText) {
+                        ((EditText) v2).setFocusableInTouchMode(true);
+                        ((EditText) v2).setFocusable(true);
+                        int id = ((EditText) v2).getId();
+                        String name = v2.getResources().getResourceEntryName(id);
+                        String nameSub = name.substring(name.indexOf("input_") +6);
 
-                HashMap<String, Integer> userThemeHashMap = userTheme.getHashMap();
-                if (userThemeHashMap.containsKey(name)) {
-                    ((EditText) v).setText(String.valueOf(userThemeHashMap.get(name)));
+                        HashMap<String, Integer> userThemeHashMap = userTheme.getHashMap();
+                        if (userThemeHashMap.containsKey(nameSub)) {
+                            ((EditText) v2).setText(String.valueOf(userThemeHashMap.get(nameSub)));
+                        }
+                    }
                 }
-                TITLE = userTheme.getTitle();
-                selectedUserTheme = userTheme;
-
-
             }
         }
+        TITLE = userTheme.getTitle();
+        selectedUserTheme = userTheme;
     }
 
 
@@ -168,26 +173,32 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                 ViewGroup vg = findViewById(R.id.text_nodes_layout);
                 for (int i = 0; i < vg.getChildCount(); i++) {
                     View v = vg.getChildAt(i);
-                    if (v instanceof EditText) {
-                        ((EditText) v).setFocusableInTouchMode(true);
-                        ((EditText) v).setFocusable(true);
-                        int id = ((EditText) v).getId();
-                        String name = v.getResources().getResourceEntryName(id);
+                    if (v instanceof CardView) {
+                        for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
+                            View v2 = ((CardView) v).getChildAt(j);
+                            if (v2 instanceof EditText) {
+                                ((EditText) v2).setFocusableInTouchMode(true);
+                                ((EditText) v2).setFocusable(true);
+                                int id = ((EditText) v2).getId();
+                                String name = v2.getResources().getResourceEntryName(id);
+                                String nameSub = name.substring(name.indexOf("input_") + 6);
 
-                        int value = 0;
+                                int value = 0;
 
-                        if (!((EditText) v).getText().toString().equals("")) {
-                            value = Integer.parseInt(((EditText) v).getText().toString());
+                                if (!((EditText) v2).getText().toString().equals("")) {
+                                    value = Integer.parseInt(((EditText) v2).getText().toString());
+                                }
+
+
+                                enteredData.put(nameSub, value);
+                                SUM += value;
+                            }
+
                         }
-
-
-                        enteredData.put(name, value);
-                        SUM += value;
-
-                        fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
-                        System.out.println("eeeo");
                     }
                 }
+                fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
+                System.out.println("eeeo");
             }
         }
 
@@ -202,16 +213,20 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
         ViewGroup vg = view.findViewById(R.id.text_nodes_layout);
         for (int i = 0; i < vg.getChildCount(); i++) {
             View v = vg.getChildAt(i);
-            if (v instanceof EditText) {
-                ((EditText) v).setFocusableInTouchMode(true);
-                ((EditText) v).setFocusable(true);
-                int id = ((EditText) v).getId();
-                String name = v.getResources().getResourceEntryName(id);
+            if (v instanceof CardView) {
+                for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
+                    View v2 = ((CardView) v).getChildAt(j);
+                    if (v2 instanceof EditText) {
+                        ((EditText) v2).setFocusableInTouchMode(true);
+                        ((EditText) v2).setFocusable(true);
+                        int id = ((EditText) v2).getId();
+                        String name = v2.getResources().getResourceEntryName(id);
+                        String nameSub = name.substring(name.indexOf("input_") + 6);
 
-                enteredData.put(name, 100);
-                SUM += 100;
-
-
+                        enteredData.put(nameSub, 100);
+                        SUM += 100;
+                    }
+                }
             }
         }
     }
@@ -224,10 +239,16 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
         ViewGroup vg = view.findViewById(R.id.text_nodes_layout);
         for (int i = 0; i < vg.getChildCount(); i++) {
             View v = vg.getChildAt(i);
-            if (v instanceof EditText) {
-                ((EditText) v).setText("0");
-                ((EditText) v).setFocusable(false);
-                ((EditText) v).setFocusableInTouchMode(false);
+            if (v instanceof CardView) {
+                for (int j = 0; j < ((CardView) v).getChildCount(); j++) {
+                    View v2 = ((CardView) v).getChildAt(j);
+                    if (v2 instanceof EditText) {
+                        ((EditText) v2).setText("0");
+                        ((EditText) v2).setFocusable(false);
+                        ((EditText) v2).setFocusableInTouchMode(false);
+                    }
+                }
+
             }
         }
     }

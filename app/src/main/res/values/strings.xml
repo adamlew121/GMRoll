@@ -15,6 +15,7 @@
     <string name="label_foot_left">left foot</string>
     <string name="label_foot_right">right foot</string>
     <string name="label_title">title</string>
+    <string name="default_decimal_hint" translatable="false">0</string>
 
     <string name="button_roll">Roll</string>
     <string name="swipe_settings_tooltip">Swipe left to view settings</string>

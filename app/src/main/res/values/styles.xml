@@ -17,4 +17,35 @@
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
 
+    <style name="setting_card_field">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginTop">@dimen/small_padding</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
+    <style name="setting_label">
+        <item name="android:layout_width">match_parent</item>>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAlignment">viewEnd</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">@dimen/small_padding</item>
+    </style>
+
+    <style name="setting_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_marginEnd">@dimen/small_padding</item>
+        <item name="android:layout_marginTop">@dimen/small_padding</item>
+        <item name="android:layout_marginStart">@dimen/small_padding</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">numberDecimal</item>
+    </style>
+
 </resources>
