@@ -90,6 +90,7 @@ public class UserTheme {
         for (int value : chanceList) {
             sum += value;
         }
+        System.out.println(sum);
         return sum;
     }
 }

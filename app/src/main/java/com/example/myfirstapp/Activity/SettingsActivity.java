@@ -2,12 +2,14 @@ package com.example.myfirstapp.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.PrimaryKey;
 
 import com.example.myfirstapp.Entity.UserTheme;
 import com.example.myfirstapp.Entity.UserThemeViewModel;
@@ -144,14 +146,21 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                 enteredData = new int[12];
 
                 for (int i = 0; i < enteredData.length; i++) {
-                    enteredData[i] = Integer.parseInt(inputList[i].getText().toString());
+                    if (TextUtils.isEmpty(inputList[i].getText())) {
+                        enteredData[i] = 0;
+                    } else {
+                        enteredData[i] = Integer.parseInt(inputList[i].getText().toString());
+                    }
                     SUM += enteredData[i];
                     inputList[i].setFocusableInTouchMode(true);
                     inputList[i].setFocusable(true);
                 }
 
-                fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
-                System.out.println("eeeo");
+                if (SUM > 0) {
+                    fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
+                } else {
+                    System.out.println("TODO Toast");
+                }
             }
         }
     }

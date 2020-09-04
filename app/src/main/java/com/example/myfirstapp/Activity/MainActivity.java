@@ -15,6 +15,8 @@ import com.example.myfirstapp.Fragment.UserThemeListFragment;
 import com.example.myfirstapp.Listener.OnSwipeTouchListener;
 import com.example.myfirstapp.R;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class MainActivity extends AppCompatActivity implements UserThemeListFragment.FragmentUserThemeListListener {
 
 
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
      */
     public void rollResult(View view) {
 
-        int tempRandom = (int) (Math.random() * SettingsActivity.SUM);
+        int tempRandom = ThreadLocalRandom.current().nextInt(1, SettingsActivity.SUM + 1);
         int rolledID = -1;
         String result = "";
 
