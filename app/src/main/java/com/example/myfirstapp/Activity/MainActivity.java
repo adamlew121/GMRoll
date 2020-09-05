@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements UserThemeListFrag
      */
     public void rollResult(View view) {
 
-        int tempRandom = ThreadLocalRandom.current().nextInt(1, SettingsActivity.SUM + 1);
+       // int tempRandom = ThreadLocalRandom.current().nextInt(1, SettingsActivity.SUM + 1);
+        int tempRandom = (int)(Math.random() * (SettingsActivity.SUM) + 1);
         int rolledID = -1;
         String result = "";
 

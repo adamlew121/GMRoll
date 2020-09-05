@@ -6,9 +6,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myfirstapp.Entity.UserThemeViewModel;
 import com.example.myfirstapp.R;
 
 public class NewUserThemeActivity extends AppCompatActivity {
@@ -18,6 +21,7 @@ public class NewUserThemeActivity extends AppCompatActivity {
 
     private EditText inputNewTitle;
     private EditText[] inputList;
+    public UserThemeViewModel mUserThemeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class NewUserThemeActivity extends AppCompatActivity {
             input.setText(String.valueOf(100));
         }
 
+        mUserThemeViewModel = new ViewModelProvider(this).get(UserThemeViewModel.class);
+
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -52,22 +58,49 @@ public class NewUserThemeActivity extends AppCompatActivity {
 
                 int[] newChanceList = new int[12];
                 if (TextUtils.isEmpty(inputNewTitle.getText())) {
-                    setResult(RESULT_CANCELED, replyIntent);
+                    // setResult(RESULT_CANCELED, replyIntent);
+                    Toast.makeText(
+                            getApplicationContext(),
+                            R.string.empty_not_saved,
+                            Toast.LENGTH_LONG).show();
+                    return;
                 } else {
-
-                    for (int i = 0; i < newChanceList.length; i++) {
-                        if (TextUtils.isEmpty(inputList[i].getText())) {
-                            setResult(RESULT_CANCELED, replyIntent);
-                            finish();
-                            break;
+                    if (mUserThemeViewModel.getUserThemeByTitle(inputNewTitle.getText().toString()) != null) {
+                        Toast.makeText(
+                                getApplicationContext(),
+                                R.string.duplicate_title,
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    } else {
+                        for (int i = 0; i < newChanceList.length; i++) {
+                            if (TextUtils.isEmpty(inputList[i].getText())) {
+                                inputList[i].setText("0");
+                                // setResult(RESULT_CANCELED, replyIntent);
+                                // finish();
+                                // break;
+                            }
+                            newChanceList[i] = Integer.parseInt(inputList[i].getText().toString());
                         }
-                        newChanceList[i] = Integer.parseInt(inputList[i].getText().toString());
-                    }
+                        boolean positiveSum = false;
+                        for (int chance : newChanceList) {
+                            if (chance > 0) {
+                                positiveSum = true;
+                                break;
+                            }
+                        }
+                        if (!positiveSum) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    R.string.zero_not_saved,
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
 
-                    String title = inputNewTitle.getText().toString();
-                    replyIntent.putExtra(EXTRA_REPLY_TITLE, title);
-                    replyIntent.putExtra(EXTRA_REPLY_CHANCE_LIST, newChanceList);
-                    setResult(RESULT_OK, replyIntent);
+                        String title = inputNewTitle.getText().toString();
+                        replyIntent.putExtra(EXTRA_REPLY_TITLE, title);
+                        replyIntent.putExtra(EXTRA_REPLY_CHANCE_LIST, newChanceList);
+                        setResult(RESULT_OK, replyIntent);
+                    }
                 }
                 finish();
             }

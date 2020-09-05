@@ -8,6 +8,7 @@
     android:layout_height="match_parent">
 
     <ScrollView
+        android:id="@+id/scrollView_text_nodes_layout"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/container_user_theme_list_fragment">
@@ -225,11 +226,13 @@
     </ScrollView>
 
     <RelativeLayout
-        android:layout_width="81dp"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="492dp"
         android:layout_above="@id/container_user_theme_list_fragment"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-2dp"
+        android:layout_toEndOf="@+id/scrollView_text_nodes_layout">
 
         <Button
             android:id="@+id/saveButton"
@@ -237,8 +240,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="4dp"
             android:onClick="saveEnteredData"
             android:text="@string/button_send" />
@@ -249,9 +252,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/saveButton"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:contentDescription="@string/add_userTheme"
             android:src="@drawable/ic_baseline_add_24"
             app:backgroundTint="@android:color/holo_green_light" />
@@ -262,8 +265,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fab_new_userTheme"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/add_userTheme"
             android:onClick="deleteSelectedUserTheme"

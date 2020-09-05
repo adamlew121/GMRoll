@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.NewUserThemeActivity"
-            android:windowSoftInputMode="stateVisible|adjustNothing" />
+            android:name=".Activity.NewUserThemeActivity" />
+            <!-- android:windowSoftInputMode="stateVisible|adjustNothing" /> -->
         <activity
             android:name=".Activity.HistoryActivity"
             android:configChanges="orientation|screenSize"

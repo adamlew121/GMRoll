@@ -23,7 +23,8 @@
     <string name="add_userTheme">Dodaj nowy zestaw</string>
     <string name="hint_userTheme">Tytuł&#8230;</string>
     <string name="button_save">Zapisz</string>
-    <string name="empty_not_saved">Zestaw z pustymi polami nie może zostać zapisany</string>
+    <string name="empty_not_saved">Zestaw bez tytułu nie może zostać zapisany</string>
+    <string name="zero_not_saved">Suma szans zestawu musi być wieksza od zera</string>
     <string name="default_not_deleted">Nie można usunąć domyślnego zestawu</string>
     <string name="duplicate_title">Zestaw z podanym tytułem już istnieje</string>
     <string name="hello_blank_fragment">Oi oi oi oi</string>

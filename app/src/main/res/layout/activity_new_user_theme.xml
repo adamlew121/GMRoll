@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,343 +16,349 @@
         android:layout_margin="@dimen/big_padding"
         android:textSize="16sp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/text_nodes_layout_new"
-        android:layout_width="358dp"
+    <ScrollView
+        android:id="@+id/scrollView_text_nodes_layout_new"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_below="@+id/input_new_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/small_padding"
+        android:layout_marginBottom="@dimen/big_padding">
 
-        <TextView
-            android:id="@+id/node_label_hand_right"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/text_nodes_layout_new"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:layout_marginBottom="2dp"
-            android:text="@string/label_hand_right"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_hand_right"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_hand_left" />
-
-        <TextView
-            android:id="@+id/node_label_foot_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="2dp"
-            android:text="@string/label_foot_left"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_foot_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_stomach" />
-
-        <TextView
-            android:id="@+id/node_label_hand_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:text="@string/label_hand_left"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_hand_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_neck" />
-
-        <EditText
-            android:id="@+id/input_new_arm_right"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_torso"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_arm_right" />
-
-        <EditText
-            android:id="@+id/input_new_torso"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_thigh_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_torso" />
-
-        <TextView
-            android:id="@+id/node_label_arm_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_arm_left"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_arm_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_head" />
-
-        <TextView
-            android:id="@+id/node_label_torso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="2dp"
-            android:text="@string/label_torso"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_torso"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_arm_right" />
-
-        <TextView
-            android:id="@+id/node_label_thigh_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="2dp"
-            android:text="@string/label_thigh_left"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_thigh_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_torso" />
-
-        <EditText
-            android:id="@+id/input_new_thigh_left"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_thigh_right"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_thigh_left" />
-
-        <TextView
-            android:id="@+id/node_label_arm_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="2dp"
-            android:text="@string/label_arm_right"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_arm_right"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_arm_left" />
-
-        <TextView
-            android:id="@+id/node_label_thigh_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="@string/label_thigh_right"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_thigh_right"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_thigh_left" />
-
-        <TextView
-            android:id="@+id/node_label_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_head"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_head"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/input_new_arm_left"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="0"
-            android:inputType="numberDecimal"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_arm_right"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_arm_left" />
-
-        <EditText
-            android:id="@+id/input_new_thigh_right"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_thigh_right" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/node_label_neck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:text="@string/label_neck"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_neck"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/node_label_hand_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="226dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/label_hand_right"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_hand_right"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_hand_left" />
 
-        <TextView
-            android:id="@+id/node_label_stomach"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="2dp"
-            android:text="@string/label_stomach"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_stomach"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_hand_right" />
+            <TextView
+                android:id="@+id/node_label_foot_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="226dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/label_foot_left"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_foot_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_stomach" />
 
-        <TextView
-            android:id="@+id/node_label_foot_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="226dp"
-            android:text="@string/label_foot_right"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/input_new_foot_right"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_new_foot_left" />
+            <TextView
+                android:id="@+id/node_label_hand_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="226dp"
+                android:text="@string/label_hand_left"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_hand_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_neck" />
 
-        <EditText
-            android:id="@+id/input_new_head"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="0"
-            android:inputType="numberDecimal"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_arm_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_head" />
+            <EditText
+                android:id="@+id/input_new_arm_right"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_torso"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_arm_right" />
 
-        <EditText
-            android:id="@+id/input_new_neck"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="0"
-            android:inputType="numberDecimal"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_hand_left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_neck" />
+            <EditText
+                android:id="@+id/input_new_torso"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_thigh_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_torso" />
 
-        <EditText
-            android:id="@+id/input_new_hand_left"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_hand_right"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_hand_left" />
+            <TextView
+                android:id="@+id/node_label_arm_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_arm_left"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_arm_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_head" />
 
-        <EditText
-            android:id="@+id/input_new_hand_right"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_stomach"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_hand_right" />
+            <TextView
+                android:id="@+id/node_label_torso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/label_torso"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_torso"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_arm_right" />
 
-        <EditText
-            android:id="@+id/input_new_stomach"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_foot_left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_stomach" />
+            <TextView
+                android:id="@+id/node_label_thigh_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/label_thigh_left"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_thigh_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_torso" />
 
-        <EditText
-            android:id="@+id/input_new_foot_left"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toTopOf="@+id/node_label_foot_right"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_foot_left" />
+            <EditText
+                android:id="@+id/input_new_thigh_left"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_thigh_right"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_thigh_left" />
 
-        <EditText
-            android:id="@+id/input_new_foot_right"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:hint="0"
-            android:textSize="16sp"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/node_label_foot_right" />
+            <TextView
+                android:id="@+id/node_label_arm_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/label_arm_right"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_arm_right"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_arm_left" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/node_label_thigh_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/label_thigh_right"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_thigh_right"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_thigh_left" />
+
+            <TextView
+                android:id="@+id/node_label_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_head"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_head"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/input_new_arm_left"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_arm_right"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_arm_left" />
+
+            <EditText
+                android:id="@+id/input_new_thigh_right"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_thigh_right" />
+
+            <TextView
+                android:id="@+id/node_label_neck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="226dp"
+                android:text="@string/label_neck"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_neck"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/node_label_stomach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="226dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/label_stomach"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_stomach"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_hand_right" />
+
+            <TextView
+                android:id="@+id/node_label_foot_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="226dp"
+                android:text="@string/label_foot_right"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/input_new_foot_right"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_new_foot_left" />
+
+            <EditText
+                android:id="@+id/input_new_head"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_arm_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_head" />
+
+            <EditText
+                android:id="@+id/input_new_neck"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_hand_left"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_neck" />
+
+            <EditText
+                android:id="@+id/input_new_hand_left"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_hand_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_hand_left" />
+
+            <EditText
+                android:id="@+id/input_new_hand_right"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_stomach"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_hand_right" />
+
+            <EditText
+                android:id="@+id/input_new_stomach"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_foot_left"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_stomach" />
+
+            <EditText
+                android:id="@+id/input_new_foot_left"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/node_label_foot_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_foot_left" />
+
+            <EditText
+                android:id="@+id/input_new_foot_right"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="32dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/node_label_foot_right" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/button_save"
@@ -361,6 +367,8 @@
         android:background="@color/colorPrimary"
         android:text="@string/button_save"
         android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        android:textColor="@color/buttonLabel"
+        android:layout_below="@+id/scrollView_text_nodes_layout_new"
+        android:layout_marginBottom="@dimen/small_padding"/>
 
-</LinearLayout>
+</RelativeLayout>
