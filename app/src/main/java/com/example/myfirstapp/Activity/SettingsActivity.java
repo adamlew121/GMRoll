@@ -142,6 +142,10 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                         Toast.LENGTH_LONG).show();
             } else {
                 fragment.mUserThemeViewModel.insert(userTheme);
+                Toast.makeText(
+                        getApplicationContext(),
+                        R.string.userTheme_create,
+                        Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(
@@ -183,6 +187,7 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
     }
 
     public void saveEnteredData(View view) {
+        boolean acceptable = true;
 
         if (selectedUserTheme != null) {
             if (selectedUserTheme.getTitle().equals(UserThemeViewModel.DEFAULT_USERTHEME_TITLE)) {
@@ -198,17 +203,33 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                     if (TextUtils.isEmpty(inputList[i].getText())) {
                         enteredData[i] = 0;
                     } else {
+                        if (inputList[i].getText().toString().length() > 4 || Integer.parseInt(inputList[i].getText().toString()) > 1000) {
+                            acceptable = false;
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    R.string.userTheme_maxValExceeded,
+                                    Toast.LENGTH_LONG).show();
+                            break;
+                        }
                         enteredData[i] = Integer.parseInt(inputList[i].getText().toString());
                     }
                     SUM += enteredData[i];
                     inputList[i].setFocusableInTouchMode(true);
                     inputList[i].setFocusable(true);
                 }
-
-                if (SUM > 0) {
-                    fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
-                } else {
-                    System.out.println("TODO Toast");
+                if (acceptable) {
+                    if (SUM > 0) {
+                        fragment.mUserThemeViewModel.insert(new UserTheme(selectedUserTheme.getTitle(), enteredData));
+                        Toast.makeText(
+                                getApplicationContext(),
+                                R.string.userTheme_update,
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(
+                                getApplicationContext(),
+                                R.string.zero_not_saved,
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         }

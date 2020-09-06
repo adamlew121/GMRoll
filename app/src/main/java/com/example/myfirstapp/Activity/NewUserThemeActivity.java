@@ -56,6 +56,7 @@ public class NewUserThemeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
 
+                boolean acceptable = true;
                 int[] newChanceList = new int[12];
                 if (TextUtils.isEmpty(inputNewTitle.getText())) {
                     // setResult(RESULT_CANCELED, replyIntent);
@@ -75,34 +76,41 @@ public class NewUserThemeActivity extends AppCompatActivity {
                         for (int i = 0; i < newChanceList.length; i++) {
                             if (TextUtils.isEmpty(inputList[i].getText())) {
                                 inputList[i].setText("0");
-                                // setResult(RESULT_CANCELED, replyIntent);
-                                // finish();
-                                // break;
+                            }
+                            if (inputList[i].getText().toString().length() > 4 || Integer.parseInt(inputList[i].getText().toString()) > 1000) {
+                                acceptable = false;
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        R.string.userTheme_maxValExceeded,
+                                        Toast.LENGTH_LONG).show();
+                                break;
                             }
                             newChanceList[i] = Integer.parseInt(inputList[i].getText().toString());
                         }
-                        boolean positiveSum = false;
-                        for (int chance : newChanceList) {
-                            if (chance > 0) {
-                                positiveSum = true;
-                                break;
+                        if (acceptable) {
+                            boolean positiveSum = false;
+                            for (int chance : newChanceList) {
+                                if (chance > 0) {
+                                    positiveSum = true;
+                                    break;
+                                }
                             }
-                        }
-                        if (!positiveSum) {
-                            Toast.makeText(
-                                    getApplicationContext(),
-                                    R.string.zero_not_saved,
-                                    Toast.LENGTH_LONG).show();
-                            return;
-                        }
+                            if (!positiveSum) {
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        R.string.zero_not_saved,
+                                        Toast.LENGTH_LONG).show();
+                                return;
+                            }
 
-                        String title = inputNewTitle.getText().toString();
-                        replyIntent.putExtra(EXTRA_REPLY_TITLE, title);
-                        replyIntent.putExtra(EXTRA_REPLY_CHANCE_LIST, newChanceList);
-                        setResult(RESULT_OK, replyIntent);
+                            String title = inputNewTitle.getText().toString();
+                            replyIntent.putExtra(EXTRA_REPLY_TITLE, title);
+                            replyIntent.putExtra(EXTRA_REPLY_CHANCE_LIST, newChanceList);
+                            setResult(RESULT_OK, replyIntent);
+                            finish();
+                        }
                     }
                 }
-                finish();
             }
         });
     }
