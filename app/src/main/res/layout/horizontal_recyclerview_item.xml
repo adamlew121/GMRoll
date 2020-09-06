@@ -28,7 +28,7 @@
                 android:scaleType="centerCrop"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/recyclerview_image"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/todo_icon" />
 
             <TextView
                 android:layout_width="wrap_content"

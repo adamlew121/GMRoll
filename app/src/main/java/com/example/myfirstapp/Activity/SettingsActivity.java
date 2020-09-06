@@ -154,7 +154,6 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
     @Override
     public void onThemeSelected(UserTheme userTheme) {
 
-        ViewGroup vg = findViewById(R.id.text_nodes_layout);
         int[] chances = userTheme.getChanceList();
         enteredData = chances;
 
