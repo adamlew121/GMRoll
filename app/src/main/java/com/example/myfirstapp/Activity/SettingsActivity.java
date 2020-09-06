@@ -61,7 +61,7 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
 
         View scrollView = findViewById(R.id.scrollView_text_nodes_layout);
         scrollView.setOnTouchListener(new OnSwipeTouchListener(this) {
-            final int MIN_DISTANCE = 100;
+            final int MIN_DISTANCE = 700;
             float downX, downY, upX, upY;
             @Override
             public void onSwipeRight() {
