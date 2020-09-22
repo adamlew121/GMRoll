@@ -4,15 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.PrimaryKey;
 
 import com.example.myfirstapp.Entity.UserTheme;
 import com.example.myfirstapp.Entity.UserThemeViewModel;
@@ -36,7 +33,6 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
     private EditText[] inputList;
     private UserThemeListFragment fragment;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +59,7 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
         scrollView.setOnTouchListener(new OnSwipeTouchListener(this) {
             final int MIN_DISTANCE = 700;
             float downX, downY, upX, upY;
+
             @Override
             public void onSwipeRight() {
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
@@ -70,12 +67,10 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                 overridePendingTransition(R.anim.slide_int_left, R.anim.slide_out_right);
             }
 
-
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 super.onTouch(v, event);
-                switch(event.getAction()){
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN: {
                         downX = event.getX();
                         downY = event.getY();
@@ -89,10 +84,16 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                         float deltaY = downY - upY;
 
                         // swipe horizontal?
-                        if(Math.abs(deltaX) > MIN_DISTANCE){
+                        if (Math.abs(deltaX) > MIN_DISTANCE) {
                             // left or right
-                            if(deltaX < 0) { this.onSwipeRight(); return true; }
-                            if(deltaX > 0) { this.onSwipeLeft(); return true; }
+                            if (deltaX < 0) {
+                                this.onSwipeRight();
+                                return true;
+                            }
+                            if (deltaX > 0) {
+                                this.onSwipeLeft();
+                                return true;
+                            }
                         }
                     }
                 }
@@ -114,9 +115,6 @@ public class SettingsActivity extends AppCompatActivity implements UserThemeList
                 findViewById(R.id.input_foot_left),
                 findViewById(R.id.input_foot_right)
         };
-
-
-
 
         FloatingActionButton fab = findViewById(R.id.fab_new_userTheme);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -73,10 +73,7 @@ public class UserThemeListAdapter extends RecyclerView.Adapter<UserThemeListAdap
                         selectedUserThemeHolder = null;
                     }
                 }
-                System.out.println("oi");
                 userThemeListInterface.onThemeSelected(mUserThemes.get(holder.getAdapterPosition()), !(selectedUserThemeHolder == null));
-                System.out.println("oi2");
-
 
                 notifyDataSetChanged();
             }

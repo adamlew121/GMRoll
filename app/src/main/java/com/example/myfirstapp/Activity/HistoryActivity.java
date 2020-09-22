@@ -22,6 +22,7 @@ public class HistoryActivity extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         setContentView(R.layout.activity_history);
 
         View view = findViewById(R.id.historyLayout);
@@ -58,5 +59,6 @@ public class HistoryActivity extends YouTubeBaseActivity {
         });
 
         youTubePlayerView.initialize(PlayerConfig.API_KEY, onInitializedListener);
+        */
     }
 }
